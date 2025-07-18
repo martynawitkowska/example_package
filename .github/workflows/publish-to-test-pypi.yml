@@ -1,0 +1,46 @@
+name: Publish example-package-martynawitkowska distribution to TestPyPI
+
+on: push
+
+jobs:
+  uv-build-package:
+    name: "uv"
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: "Install uv"
+        uses: astral-sh/setup-uv@v6
+        with:
+          version: "0.5.25"
+      - name: "Set up Python"
+        uses: actions/setup-python@v5
+        with:
+          python-version-file: ".python-version"
+      - name: "Build package"
+        run: uv build
+
+  publish-to-testpypi:
+    name: Publish example-package-martynawitkowska distribution to TestPyPI
+    needs:
+      - uv-build-package
+    runs-on: ubuntu-latest
+
+    environment:
+      name: testpypi
+      url: https://test.pypi.org/p/example-package-martynawitkowska/
+
+    permissions:
+      id-token: write
+
+    steps:
+      - name: Download all the dists
+        uses: actions/download-artifact@v4
+        with:
+          name: python-package-distributions
+          path: dist/
+      - name: Publish distribution 📦 to TestPyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          repository-url: https://test.pypi.org/legacy/
