@@ -1,11 +1,9 @@
 name: Publish example-package-martynawitkowska distribution to TestPyPI
 
 on:
-  pull_request:
+  push:
     branches:
       - master
-    types:
-      - closed
 
 jobs:
   uv-build-package:
