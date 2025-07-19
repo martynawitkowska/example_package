@@ -2,6 +2,8 @@
 name = "example-package-martynawitkowska"
 description = "Example! Hey!"
 readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
 authors = [
     { name = "Martyna Witkowska", email = "mar.witkowska@gmail.com" }
 ]
@@ -12,9 +14,7 @@ classifiers = [
     "Programming Language :: Python :: 3",
     "Operating System :: iOS",
 ]
-license = "MIT"
-license-files = ["LICENSE"]
-readme = "README.md"
+
 keywords = ["pdf", "jupyter"]
 
 dependencies = [
