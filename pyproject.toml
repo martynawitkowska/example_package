@@ -13,8 +13,8 @@ classifiers = [
     "Operating System :: iOS",
 ]
 license = "MIT"
-license-files = ["LICEN[CS]E*"]
-
+license-files = ["LICENSE"]
+readme = "README.md"
 keywords = ["pdf", "jupyter"]
 
 dependencies = [
